@@ -1,0 +1,17 @@
+﻿@page
+@model Logbook1.Pages.Question1Model
+@{
+    ViewData["Title"] = "Question 1";
+}
+
+
+
+<h1>Question 1</h1>
+<p> Enter your name:</p>
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    <div>Name: <input asp-for="name" /> </div>
+    <input type="submit" />
+</form>
+
+<div id="result">@this.Model.name</div>

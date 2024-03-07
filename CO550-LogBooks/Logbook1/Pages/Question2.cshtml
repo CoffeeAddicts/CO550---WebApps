@@ -1,0 +1,18 @@
+﻿@page
+@model Logbook1.Pages.Question2Model
+@{
+    ViewData["Title"] = "Question 2";
+}
+
+
+<h1>Question 2</h1>
+<p> Please enter amount to convert from Pound Sterling to Euros</p>
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    <div>To Convert: £ <input asp-for="toConvert" /> </div>
+    <input type="submit" />
+</form>
+
+<div>Converted:</div>
+<div id="result">€ @this.Model.result</div>
+
