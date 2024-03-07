@@ -29,7 +29,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "LogBook2/1.0.0": {
+      "Logbook2/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.32",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.32",
@@ -305,10 +305,10 @@
           "WindowsBase": "4.0.0.0"
         },
         "runtime": {
-          "LogBook2.dll": {}
+          "Logbook2.dll": {}
         },
         "compile": {
-          "LogBook2.dll": {}
+          "Logbook2.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -3818,7 +3818,7 @@
     }
   },
   "libraries": {
-    "LogBook2/1.0.0": {
+    "Logbook2/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

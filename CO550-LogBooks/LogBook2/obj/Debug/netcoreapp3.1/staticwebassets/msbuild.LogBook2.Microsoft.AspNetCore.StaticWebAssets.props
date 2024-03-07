@@ -2,9 +2,9 @@
   <ItemGroup>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\css\site.css))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>css\site.css</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -18,9 +18,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>favicon.ico</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -34,9 +34,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\site.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>js\site.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -50,9 +50,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-grid.css))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap-grid.css</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -66,9 +66,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-grid.css.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap-grid.css.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -82,9 +82,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-grid.min.css))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap-grid.min.css</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -98,9 +98,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-grid.min.css.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap-grid.min.css.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -114,9 +114,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-reboot.css))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap-reboot.css</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -130,9 +130,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-reboot.css.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap-reboot.css.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -146,9 +146,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-reboot.min.css))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap-reboot.min.css</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -162,9 +162,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap-reboot.min.css.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -178,9 +178,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.css))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap.css</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -194,9 +194,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.css.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap.css.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -210,9 +210,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.min.css))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap.min.css</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -226,9 +226,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.min.css.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\css\bootstrap.min.css.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -242,9 +242,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.bundle.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\js\bootstrap.bundle.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -258,9 +258,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.bundle.js.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\js\bootstrap.bundle.js.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -274,9 +274,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.bundle.min.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\js\bootstrap.bundle.min.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -290,9 +290,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\js\bootstrap.bundle.min.js.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -306,9 +306,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\js\bootstrap.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -322,9 +322,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.js.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\js\bootstrap.js.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -338,9 +338,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.min.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\js\bootstrap.min.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -354,9 +354,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.min.js.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\dist\js\bootstrap.min.js.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -370,9 +370,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\LICENSE))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\bootstrap\LICENSE</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -386,9 +386,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -402,9 +402,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -418,9 +418,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery-validation-unobtrusive\LICENSE.txt))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery-validation-unobtrusive\LICENSE.txt</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -434,9 +434,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery-validation\dist\additional-methods.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery-validation\dist\additional-methods.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -450,9 +450,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery-validation\dist\additional-methods.min.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery-validation\dist\additional-methods.min.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -466,9 +466,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery-validation\dist\jquery.validate.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery-validation\dist\jquery.validate.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -482,9 +482,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery-validation\dist\jquery.validate.min.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery-validation\dist\jquery.validate.min.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -498,9 +498,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery-validation\LICENSE.md))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery-validation\LICENSE.md</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -514,9 +514,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\dist\jquery.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery\dist\jquery.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -530,9 +530,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\dist\jquery.min.js))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery\dist\jquery.min.js</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -546,9 +546,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\dist\jquery.min.map))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery\dist\jquery.min.map</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
@@ -562,9 +562,9 @@
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt))">
       <SourceType>Package</SourceType>
-      <SourceId>LogBook2</SourceId>
+      <SourceId>Logbook2</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/LogBook2</BasePath>
+      <BasePath>_content/Logbook2</BasePath>
       <RelativePath>lib\jquery\LICENSE.txt</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>

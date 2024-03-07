@@ -151,8 +151,8 @@ C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO
 C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\LogBook2.dll
 C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\LogBook2.pdb
 C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\LogBook2.genruntimeconfig.cache
-C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Student\Create.cshtml.g.cs
-C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Student\Delete.cshtml.g.cs
-C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Student\Details.cshtml.g.cs
-C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Student\Edit.cshtml.g.cs
-C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Student\Index.cshtml.g.cs
+C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Create.cshtml.g.cs
+C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Delete.cshtml.g.cs
+C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Details.cshtml.g.cs
+C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Edit.cshtml.g.cs
+C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Index.cshtml.g.cs
