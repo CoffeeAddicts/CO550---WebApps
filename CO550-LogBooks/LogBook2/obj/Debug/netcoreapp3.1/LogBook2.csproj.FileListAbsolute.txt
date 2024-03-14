@@ -156,3 +156,4 @@ C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO
 C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Details.cshtml.g.cs
 C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Edit.cshtml.g.cs
 C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Index.cshtml.g.cs
+C:\Users\BartlomiejWojda\OneDrive - GHA Solutions Ltd\Documents\CO550-WebApps\CO550---WebApps\CO550-LogBooks\LogBook2\obj\Debug\netcoreapp3.1\Razor\Pages\About.cshtml.g.cs
