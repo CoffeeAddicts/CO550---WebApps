@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Fit To Fight</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FitToFight.styles.css" asp-append-version="true" />
+</head>
+
+<style>
+    .hoverable:hover {
+        border-bottom: 2px solid red;
+        font-size:22px;
+        transition: font-size 1s,border-bottom 2s;
+    }
+</style>
+<body style="background-color:#262626">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" style="margin-left:10px;margin-right:10px">
+                <ul class="navbar-nav ">
+                    <li class="nav-item ">
+                        <a class="navbar-brand hoverable" asp-area="" asp-page="/Index">Fit To Fight</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" asp-area="" asp-page="ClassPage/Index">Classes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" asp-area="" asp-page="/Privacy">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" asp-area="" asp-page="/Home/Index">Home</a>
+                    </li>
+                </ul>
+                    <partial name="_LoginPartial"/>
+@*                     <li class="nav-item">
+                        <a class="nav-link text-light" asp-area="" asp-page="/Account/Index"><i class="glyphicon glyphicon-trash"></i>Home</a>
+                    </li> *@
+
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - FitToFight - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

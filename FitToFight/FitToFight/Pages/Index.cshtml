@@ -1,0 +1,88 @@
+﻿@page
+@model FitToFight.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .container-fluid {
+        padding: 0;
+    }
+
+    .mainHeading {
+        color: white;
+        max-width: 500px;
+    }
+
+    .mainSub {
+        color: white;
+    }
+
+    .element {
+        max-width: fit-content;
+        margin: auto;
+    }
+
+    .row {
+        padding: 16px;
+    }
+
+    .imageRow {
+        height: 300px;
+    }
+</style>
+
+<div class="container-fluid" style="">
+    <section class="parallax-bg-1 text-center" style="display:grid;justify-content:center;height:400px; background-image:url('https://images.unsplash.com/photo-1591173627030-6fc3077b8d23?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+        <div class="element">
+            <h1 class="mainHeading">
+                <i style="color:red">
+                    Fit To Fight
+                </i>
+                Kickboxing
+            </h1>
+            <p class="mainHeading">A Kickboxing Club with over 25 years of experience and 200+ championship belts won. Run by a family aiming to train people for fights, fun and fitness.</p>
+        </div>
+    </section>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="border border-primary rounded text-center mainSub imageRow">This is a 3 row</div>
+        </div>
+        <div class="col-sm-9">
+            <div class="border border-primary rounded text-center mainSub imageRow">This is a 9 row</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="border border-primary rounded text-center mainSub imageRow">This is a 9 row</div>
+        </div>
+        <div class="col-sm-3">
+            <div class="border border-primary rounded text-center mainSub imageRow">This is a 3 row</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="border border-primary rounded text-center mainSub imageRow">This is a 3 row</div>
+        </div>
+        <div class="col-sm-9">
+            <div class="border border-primary rounded text-center mainSub imageRow">This is a 9 row</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="border border-primary rounded text-center mainSub imageRow">This is a 9 row</div>
+        </div>
+        <div class="col-sm-3">
+            <div class="border border-primary rounded text-center mainSub imageRow">This is a 3 row</div>
+        </div>
+    </div>
+</div>
+

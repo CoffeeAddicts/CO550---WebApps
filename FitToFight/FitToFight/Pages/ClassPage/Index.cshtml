@@ -1,0 +1,48 @@
+﻿@page
+@model FitToFight.Pages.ClassPage.IndexModel
+
+@{
+    ViewData["Title"] = "Class";
+}
+
+<style>
+    .row {
+        justify-content: center;
+    }
+</style>
+
+
+<div class="container">
+    @{
+        var date = new DateTime(2024, 4, 13);
+        // var date = DateTime.Now;
+        var dayOffset = ((int)date.DayOfWeek) - 1;
+
+
+
+        @for (int i = 0; i < 28; i = i + 7)
+        {
+            <div class="row">
+                @for (int j = 0; j < 7; j++)
+                {
+                    <div class="col-sm-1" style="height:100px;width:100px;margin:5px;display:grid;justify-content:center;">
+                        <div class="border border-primary rounded text-center" style="color: white;height:100px;width:100px">
+                        @*This will be a .where here the cosmetic changes will be made*@
+                            @(date.AddDays(i + j - dayOffset).ToString("MMMM dd, yyyy"))
+                            @if (date.AddDays(i + j - dayOffset) == DateTime.Now)
+                            {
+                                <div style="border-bottom:solid;border-width:0.5px;height:0.5px;width:100%"> </div>
+                            }
+                            else
+                            {
+                                <div style="border-bottom:solid;border-width:0px;height:0.5px;width:100%"> </div>
+                            }
+                            @(date.AddDays(i + j - dayOffset).DayOfWeek)
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+
+</div>
