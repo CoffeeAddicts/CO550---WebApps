@@ -13,5 +13,7 @@ namespace FitToFight.Models
         public int MaxSize { get; set; }
         [NotMapped]
         public int CurrentSize { get; set; }
+        [NotMapped]
+        public bool Past { get; set; }
     }
 }

@@ -45,25 +45,25 @@
             <p class="mainHeading">A Kickboxing Club with over 25 years of experience and 200+ championship belts won. Run by a family aiming to train people for fights, fun and fitness.</p>
         </div>
     </section>
-@* </div> *@
+@* background-image:url('https://images.pexels.com/photos/4761788/pexels-photo-4761788.jpeg?auto=compress&cs=tinysrgb&w=450') *@
 
 @{
     var count = 0;
 }
 
-@foreach (var data in Model.HomePageData)
+@foreach (var data in Model.HomePageData.OrderBy(r => r.Order))
 {
     if (count % 2 == 0)
     {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 mx-auto">
-                    <section class=" border border-danger rounded text-center mainSub imageRow parallax-bg-1" style=" background-image:url('https://images.pexels.com/photos/4761788/pexels-photo-4761788.jpeg?auto=compress&cs=tinysrgb&w=450')">
+                    <section class=" border border-danger rounded text-center mainSub imageRow parallax-bg-1" style="  background-image:url('@data.ImageUrl')"> 
                     </section>
                     @* <div class="border border-primary rounded text-center mainSub imageRow">This is a 3 row</div> *@
                 </div>
                 <div class="col-sm-9">
-                    <div class="border border-danger rounded text-center mainSub imageRow"><h1>@data.Key</h1> @data.Data</div>
+                    <div class="border border-danger rounded text-center mainSub imageRow"><h1>@data.Header</h1> @data.Data</div>
                 </div>
             </div>
         </div>
@@ -73,10 +73,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="border border-danger rounded text-center mainSub imageRow"><h1>@data.Key</h1> @data.Data</div>
+                    <div class="border border-danger rounded text-center mainSub imageRow"><h1>@data.Header</h1> @data.Data</div>
                 </div>
                 <div class="col-sm-3">
-                        <section class=" border border-danger rounded text-center mainSub imageRow parallax-bg-1" style=" background-image:url('https://images.pexels.com/photos/598686/pexels-photo-598686.jpeg?auto=compress&cs=tinysrgb&w=450')">
+                    <section class=" border border-danger rounded text-center mainSub imageRow parallax-bg-1" style=" background-image:url('@data.ImageUrl')">
                         </section>
                 </div>
             </div>

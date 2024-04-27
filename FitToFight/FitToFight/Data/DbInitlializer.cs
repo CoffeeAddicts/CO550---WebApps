@@ -20,7 +20,7 @@ namespace ContosoUniversity.Data
 
             var HomePageData = new HomePageData[]
             {
-                new HomePageData { Key = "FirstContainer",   Data= "This is the first Container " },
+                new HomePageData { Id = "FirstContainer",   Data= "This is the first Container " },
             };
 
             context.HomePageData.AddRange(HomePageData);

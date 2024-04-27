@@ -50,17 +50,8 @@
         var kidsClasses = Model.ClassesView.ToList();
 
 
-
-        // if (showKids)
-        // {
-        //     classes = Model.ClassesView.Where(r => r.ClassType == "Kids").OrderBy(r => r.Date).ToList();
-        //     date = date.Date + new TimeSpan(17, 30, 0);
-
-        // }
         classes = Model.ClassesView.Where(r => r.ClassType != "Kids").OrderBy(r => r.Date).ToList();
         date = date.Date + new TimeSpan(19, 0, 0);
-
-
 
 
         <div class="row-lg-11" style="height:10px"></div>
@@ -109,19 +100,46 @@
                                     var appUser = UserManager.GetUserAsync(User).Result;
                                     if (appUser.Gender == "Female" && currentClass.ClassType == "Ladies" && appUser.DateOfBirth < DateTime.Now.AddYears(-14))
                                     {
-                                        <div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal">
-                                                Book
-                                            </button>
-                                        </div>
+                                        var alreadyBooked = Model.ActiveClasses.Where(r => r.ScheduleID == currentClass.ScheduleID && r.UserID == Guid.Parse(appUser.Id)).FirstOrDefault();
+
+                                        if (alreadyBooked == null)
+                                        {
+                                            <div>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal" data-bs-classid="@currentClass.ScheduleID">
+                                                    Book
+                                                </button>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal" data-bs-classid="@currentClass.ScheduleID" disabled>
+                                                    Unbook
+                                                </button>
+                                            </div>
+                                        }
+
                                     }
                                     else if (currentClass.ClassType == "Normal" && appUser.DateOfBirth < DateTime.Now.AddYears(-14))
                                     {
-                                        <div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal">
-                                                Book
-                                            </button>
-                                        </div>
+                                        var alreadyBooked = Model.ActiveClasses.Where(r => r.ScheduleID == currentClass.ScheduleID && r.UserID == Guid.Parse(appUser.Id)).FirstOrDefault();
+
+                                        if (alreadyBooked == null)
+                                        {
+                                            <div>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal" data-bs-classid="@currentClass.ScheduleID">
+                                                    Book
+                                                </button>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal" data-bs-classid="@currentClass.ScheduleID" disabled>
+                                                    Unbook
+                                                </button>
+                                            </div>
+                                        }
                                     }
 
                                 }
@@ -183,11 +201,24 @@
                                     var appUser = UserManager.GetUserAsync(User).Result;
                                     if (appUser.DateOfBirth > DateTime.Now.AddYears(-14))
                                     {
-                                        <div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal" data-bs-classid="@currentClass.ScheduleID">
-                                                Book
-                                            </button>
-                                        </div>
+                                        var alreadyBooked = Model.ActiveClasses.Where(r => r.ScheduleID == currentClass.ScheduleID && r.UserID == Guid.Parse(appUser.Id)).FirstOrDefault();
+
+                                        if (alreadyBooked == null)
+                                        {
+                                            <div>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal" data-bs-classid="@currentClass.ScheduleID" data-bs-type="Book">
+                                                    Book
+                                                </button>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#bookModal" data-bs-classid="@currentClass.ScheduleID" data-bs-type="Cancel">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        }
                                     }
                                 }
                             </div>
@@ -202,40 +233,6 @@
 
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="test">Open modal for test</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="test">Open modal for test</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="test">Open modal for test</button>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 
 <div class="modal fade" id="bookModal">
     <div class="modal-dialog">
@@ -245,14 +242,14 @@
                     <h5 class="modal-title" id="exampleModalLabel">Book</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <input asp-for="test" type="hidden" id="ScheduleId" />
+                <input asp-for="scheduleId" type="hidden" id="ScheduleId" />
+                <input asp-for="type" type="hidden" id="Type" />
                 @* <asp:TextBox ID="ScheduleId" type="text" runat="server"></asp:TextBox> *@
-                <div class="modal-body">
-                    Are you sure you want to book onto this class?
+                <div class="modal-body" id="modal-body">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" data-bs-sumbit="modal">Confirm</button>
+                    <button type="submit" class="btn btn-success" data-bs-sumbit="modal" id="submitButton">Confirm</button>
                 </div>
             </form>
         </div>
@@ -267,9 +264,25 @@
         bookModal.addEventListener('show.bs.modal', function (event) {
             var button = event.relatedTarget
             var classid = button.getAttribute('data-bs-classid')
+            var type = button.getAttribute('data-bs-type')
+
+
+            if (type == "book") {
+                document.getElementById("modal-body").innerHTML = "Are you sure you want to book onto this class?"
+                document.getElementById("submitButton").classList.remove("btn-danger")
+                document.getElementById("submitButton").classList.add("btn-success")
+            }
+            else {
+                document.getElementById("modal-body").innerHTML = "Are you sure you want to cancel this class?"
+                document.getElementById("submitButton").classList.remove("btn-success")
+                document.getElementById("submitButton").classList.add("btn-danger")
+            }
+
+
+
 
             document.getElementById("ScheduleId").value = classid;
-
+            document.getElementById("Type").value = type;
 
         })
 

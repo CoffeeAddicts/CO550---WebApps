@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FitToFight.Models
 {
@@ -10,5 +11,7 @@ namespace FitToFight.Models
 
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
+        [NotMapped]
+        public bool isAdmin { get; set; }   
     }
 }

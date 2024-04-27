@@ -20,6 +20,7 @@ namespace FitToFight.Pages.ClassPage
         }
         //Need to also make sure there are days before 
         public List<Class> ClassesView { get; set; } = default!;
+        public List<ActiveClass> ActiveClasses { get; set; }
 
         public void OnGet()
         {
@@ -105,17 +106,30 @@ namespace FitToFight.Pages.ClassPage
             }
 
             ClassesView = classes;
+            ActiveClasses = _context.ActiveClasses.ToList();
         }
         [BindProperty]
-        public string test { get; set; } = "";
+        public string scheduleId { get; set; } = "";
+
+        [BindProperty]
+        public string type { get; set; } = "";
         public void OnPost()
         {
-            var classID = Guid.Parse(test);
+            var classID = Guid.Parse(scheduleId);
             var classItem = _context.Classes.Where(r => r.ScheduleID == classID).FirstOrDefault();
 
             var task = _userManager.GetUserAsync(User);
             task.Wait();
             var appUser = task.Result;
+
+            if(type == "Cancel")
+            {
+                var classToRemove = _context.ActiveClasses.Where(r => r.ScheduleID == classItem.ScheduleID && r.UserID == Guid.Parse(appUser.Id)).FirstOrDefault();
+                _context.ActiveClasses.Remove(classToRemove);
+                _context.SaveChanges();
+                OnGet();
+                return;
+            }
 
             if (_context.ActiveClasses.Where(r => r.ScheduleID == classItem.ScheduleID && r.UserID == Guid.Parse(appUser.Id)).Count() != 0)
             {
