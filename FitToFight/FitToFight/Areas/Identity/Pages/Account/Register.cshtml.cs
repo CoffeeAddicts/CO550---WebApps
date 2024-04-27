@@ -119,12 +119,7 @@ namespace FitToFight.Areas.Identity.Pages.Account
             [Required]
             [DataType(DataType.PhoneNumber)]
             [Display(Name = "Emergency Contact")]
-            public int EmergencyContact { get; set; }
-
-            [Required]
-            [DataType(DataType.PhoneNumber)]
-            [Display(Name = "Legal Guardian Phone Number")]
-            public int LegalGuardianPhoneNumber { get; set; }
+            public int PhoneNumber { get; set; }
         }
 
         public enum Gender
@@ -159,8 +154,7 @@ namespace FitToFight.Areas.Identity.Pages.Account
                     DateOfBirth = Input.DateOfBirth,
                     UserName = Input.Email,
                     Email = Input.Email,
-                    EmergencyContact = Input.EmergencyContact, // There Might a phone number column already
-                    LegalGuardianPhoneNumber = Input.LegalGuardianPhoneNumber,
+                    PhoneNumber = Input.PhoneNumber.ToString(),
                     Gender = Input.Gender.ToString(), // This will return a number? 
                 };
 
@@ -169,6 +163,8 @@ namespace FitToFight.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, "user");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

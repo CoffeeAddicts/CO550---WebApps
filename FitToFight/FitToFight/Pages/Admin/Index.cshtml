@@ -1,0 +1,138 @@
+﻿@page
+@model FitToFight.Pages.Admin.IndexModel
+@{
+}
+
+@*So this will need a view with all the data*@
+
+
+<div class="row-lg-11">
+    <div class="col-lg-11 mx-auto rounded border p-3 bg-light">
+        <div class="row mx-auto" style="margin-top:10px">
+            This will be a table for home data
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Users</h2>
+                            </div>
+                            <div class="col-sm-6 tableright">
+                                @* <a href="#addUserModal" class="btn btn-success" data-toggle="modal" data-customerid="@CustID"><span class="glyphicon glyphicon-plus-sign"></span> <span style="padding-left:10px">Add new user</span></a> *@
+                            </div>
+                        </div>
+                    </div>
+                    <table id="UserTable" name="UserTable" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width:25%">Email</th>
+                                <th style="width:65%">Known As</th>
+                                <th style="width:10%">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model.ViewModel.HomePage)
+                            {
+                                <tr>
+                                    <td style="width:25%">@user.Key</td>
+                                    <td style="width:65%">@user.Data</td>
+                                    <td style="width:10%">
+                                        sad
+                                        <a class="text-dark" href="#deleteUserModal" id="deletebutton" title="Delete" data-toggle="modal"><span class="glyphicon glyphicon-trash" style="padding-left:10px">fds</span></a>
+                                        sad
+                                        @{
+                                            if (this.User.IsInRole("Power") || this.User.IsInRole("Admin") || this.User.IsInRole("User") || this.User.IsInRole("Super") || this.User.IsInRole("Login"))
+                                            {
+                                                // <a href="#editUserModal" id="editbutton" title="Edit" data-toggle="modal" data-name="@user.Email" data-id="@user.UserId" data-knownas="@user.KnownAs" data-customerid="@CustID" data-adminrole="@user.AdminRole" data-userrole="@user.UserRole" data-customerrole="@user.CustomerRole" data-approle="@user.AppRole" data-licencerole="@user.LicenceRole" data-superrole="@user.SuperRole" data-companyrole="@user.CompanyRole" data-loginrole="@user.LoginRole" data-devicerole="@user.DeviceRole" data-commrole="@user.CommRole"><span class="glyphicon glyphicon-pencil" style="padding-left:10px"></span></a>
+                                                // if (this.User.IsInRole("Admin"))
+                                                // {
+                                                //     <a href="#2FAUserModal" id="2FAbutton" title="2FA" data-toggle="modal" data-name="@user.Email" data-customerid="@CustID" data-factor="@user.TwoFactorEnabled"><span class="glyphicon glyphicon-lock" style="padding-left:10px"></span></a>
+                                                // }
+                                                // <a href="#suspendUserModal" id="suspendbutton" title="Suspend" data-toggle="modal" data-name="@user.Email" data-customerid="@CustID" data-suspend="@user.Suspended"><span class="glyphicon glyphicon-ban-circle" style="padding-left:10px"></span></a>
+                                                // if (this.User.IsInRole("GHA"))
+                                                // {
+                                                //     <a href="#deleteUserModal" id="deletebutton" title="Delete" data-toggle="modal" data-name="@user.Email" data-customerid="@CustID"><span class="glyphicon glyphicon-trash" style="padding-left:10px"></span></a>
+                                                // }
+                                            }
+
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="clearfix">
+                        <div class="hint-text">Showing <b>@Model.ViewModel.HomePage.Count</b> entries</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height:10px"></div>
+
+<div class="row-lg-11">
+    <div class="col-lg-11 mx-auto rounded border p-3 bg-light">
+        <div class="row mx-auto" style="margin-top:10px">
+            This will include the class calendar but it will allow to open up a modal and see who is attending - Simply grabbing the Active classes
+
+          @*   @for (int i = 0; i < 28; i = i + 7)
+            {
+                <div class="row mx-auto" style="margin-top:10px">
+                    @for (int j = 0; j < 7; j++)
+                    {
+                        var currentClass = classes.Where(r => r.Date == date.AddDays(i + j - dayOffset)).FirstOrDefault();
+                        if (currentClass == null || currentClass.ClassType == "Weekend")
+                        {
+                            <div class="col-sm-1 rounded text-center text-light mx-auto bg-dark" style="height:125px;width:150px;">
+                                @(date.AddDays(i + j - dayOffset).DayOfWeek)
+                            </div>
+                            continue;
+                        }
+
+                        <div class="col-sm-1 rounded text-center text-light mx-auto @(!currentClass.Open  ? "bg.Closed" :$"bg-{currentClass.ClassType}" ) " style="height:125px;width:150px;">
+                            <div>
+                                @(date.AddDays(i + j - dayOffset).DayOfWeek)
+                            </div>
+                            <div>
+                                @currentClass.Date.TimeOfDay
+                            </div>
+
+                            <div style="border-bottom:solid;border-width:0.5px;height:0.5px;width:100%"> </div>
+                            <div>
+                                @currentClass.Date.ToString("dd - MM - yyyy")
+                            </div>
+                            <div>
+                                @currentClass.ClassType
+                            </div>
+
+                            <div style="border-bottom:solid;border-width:0.5px;height:0.5px;width:100%"> </div>
+
+                            0/@currentClass.MaxSize
+                        </div>
+
+                    }
+                </div>
+            } *@
+        </div>
+    </div>
+</div>
+<div style="height:10px"></div>
+
+<div class="row-lg-11">
+    <div class="col-lg-11 mx-auto rounded border p-3 bg-light">
+        <div class="row mx-auto" style="margin-top:10px">
+            This will be a table for app settings
+        </div>
+    </div>
+</div>
+<div style="height:10px"></div>
+
+<div class="row-lg-11">
+    <div class="col-lg-11 mx-auto rounded border p-3 bg-light">
+        <div class="row mx-auto" style="margin-top:10px">
+            This will be a table for app settings
+        </div>
+    </div>
+</div>
+<div style="height:10px"></div>

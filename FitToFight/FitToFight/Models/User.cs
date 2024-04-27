@@ -10,8 +10,5 @@ namespace FitToFight.Models
 
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
-        public int EmergencyContact { get; set; }
-        [DisplayFormat(NullDisplayText = "User Old Enough")]
-        public int? LegalGuardianPhoneNumber { get; set; }
     }
 }

@@ -1,48 +1,282 @@
 ﻿@page
+@using FitToFight.Models;
 @model FitToFight.Pages.ClassPage.IndexModel
+@using Microsoft.AspNetCore.Identity
 
 @{
     ViewData["Title"] = "Class";
 }
 
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
 <style>
     .row {
         justify-content: center;
+    }
+
+    .bg-Weekend {
+        background-color: grey;
+    }
+
+    .bg-Normal {
+        background-color: green;
+    }
+
+    .bg-Ladies {
+        background-color: purple;
+    }
+
+    .bg-Kids {
+        background-color: orange;
+    }
+
+    .bg.Closed {
+        background-color: red;
     }
 </style>
 
 
 <div class="container">
     @{
-        var date = new DateTime(2024, 4, 13);
+        var date = DateTime.Now;
         // var date = DateTime.Now;
         var dayOffset = ((int)date.DayOfWeek) - 1;
 
+        ViewBag.ShowKidsClasses = false;
 
 
-        @for (int i = 0; i < 28; i = i + 7)
-        {
-            <div class="row">
-                @for (int j = 0; j < 7; j++)
+        var classes = Model.ClassesView.ToList();
+        var kidsClasses = Model.ClassesView.ToList();
+
+
+
+        // if (showKids)
+        // {
+        //     classes = Model.ClassesView.Where(r => r.ClassType == "Kids").OrderBy(r => r.Date).ToList();
+        //     date = date.Date + new TimeSpan(17, 30, 0);
+
+        // }
+        classes = Model.ClassesView.Where(r => r.ClassType != "Kids").OrderBy(r => r.Date).ToList();
+        date = date.Date + new TimeSpan(19, 0, 0);
+
+
+
+
+        <div class="row-lg-11" style="height:10px"></div>
+
+        <div class="row-lg-11">
+            <div class="col-lg-11 mx-auto rounded border p-3 bg-light">
+                <h1>Adult Classes</h1>
+
+                @for (int i = 0; i < 28; i = i + 7)
                 {
-                    <div class="col-sm-1" style="height:100px;width:100px;margin:5px;display:grid;justify-content:center;">
-                        <div class="border border-primary rounded text-center" style="color: white;height:100px;width:100px">
-                        @*This will be a .where here the cosmetic changes will be made*@
-                            @(date.AddDays(i + j - dayOffset).ToString("MMMM dd, yyyy"))
-                            @if (date.AddDays(i + j - dayOffset) == DateTime.Now)
+                    <div class="row mx-auto" style="margin-top:10px">
+                        @for (int j = 0; j < 7; j++)
+                        {
+                            var currentClass = classes.Where(r => r.Date == date.AddDays(i + j - dayOffset)).FirstOrDefault();
+                            if (currentClass == null || currentClass.ClassType == "Weekend")
                             {
+                                <div class="col-sm-1 rounded text-center text-light mx-auto bg-dark" style="height:175px;width:150px;">
+                                    @(date.AddDays(i + j - dayOffset).DayOfWeek)
+                                </div>
+                                continue;
+                            }
+
+                            <div class="col-sm-1 rounded text-center text-light mx-auto @(!currentClass.Open  ? "bg.Closed" :$"bg-{currentClass.ClassType}" ) " style="height:175px;width:150px;">
+                                <div>
+                                    @(date.AddDays(i + j - dayOffset).DayOfWeek)
+                                </div>
+                                <div>
+                                    @currentClass.Date.TimeOfDay
+                                </div>
+
                                 <div style="border-bottom:solid;border-width:0.5px;height:0.5px;width:100%"> </div>
-                            }
-                            else
-                            {
-                                <div style="border-bottom:solid;border-width:0px;height:0.5px;width:100%"> </div>
-                            }
-                            @(date.AddDays(i + j - dayOffset).DayOfWeek)
-                        </div>
+                                <div>
+                                    @currentClass.Date.ToString("dd - MM - yyyy")
+                                </div>
+                                <div>
+                                    @currentClass.ClassType
+                                </div>
+
+                                <div style="border-bottom:solid;border-width:0.5px;height:0.5px;width:100%"> </div>
+
+                                @currentClass.CurrentSize/@currentClass.MaxSize
+                                <div style="border-bottom:solid;border-width:0.5px;height:0.5px;width:100%"> </div>
+                                <div style="height:10px"></div>
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    var appUser = UserManager.GetUserAsync(User).Result;
+                                    if (appUser.Gender == "Female" && currentClass.ClassType == "Ladies" && appUser.DateOfBirth < DateTime.Now.AddYears(-14))
+                                    {
+                                        <div>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal">
+                                                Book
+                                            </button>
+                                        </div>
+                                    }
+                                    else if (currentClass.ClassType == "Normal" && appUser.DateOfBirth < DateTime.Now.AddYears(-14))
+                                    {
+                                        <div>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal">
+                                                Book
+                                            </button>
+                                        </div>
+                                    }
+
+                                }
+                            </div>
+
+                        }
                     </div>
                 }
             </div>
-        }
+        </div>
+        <div class="row-lg-11" style="height:10px"></div>
+
+        kidsClasses = Model.ClassesView.Where(r => r.ClassType == "Kids").OrderBy(r => r.Date).ToList();
+        date = DateTime.Now;
+        date = date.Date + new TimeSpan(17, 30, 0);
+
+        <div class="row-lg-11">
+            <div class="col-lg-11 mx-auto rounded border p-3 bg-light">
+                <h1>Kids Classes</h1>
+
+                @for (int i = 0; i < 28; i = i + 7)
+                {
+                    <div class="row mx-auto" style="margin-top:10px">
+                        @for (int j = 0; j < 7; j++)
+                        {
+                            var currentClass = kidsClasses.Where(r => r.Date == date.AddDays(i + j - dayOffset)).FirstOrDefault();
+                            if (currentClass == null || currentClass.ClassType == "Weekend")
+                            {
+                                <div class="col-sm-1 rounded text-center text-light mx-auto bg-dark" style="height:175px;width:150px;">
+                                    @(date.AddDays(i + j - dayOffset).DayOfWeek)
+                                </div>
+                                continue;
+                            }
+
+                            <div class="col-sm-1 rounded text-center text-light mx-auto @(!currentClass.Open  ? "bg.Closed" :$"bg-{currentClass.ClassType}" ) " style="height:175px;width:150px;">
+                                <div>
+                                    @(date.AddDays(i + j - dayOffset).DayOfWeek)
+                                </div>
+                                <div>
+                                    @currentClass.Date.TimeOfDay
+                                </div>
+
+                                <div style="border-bottom:solid;border-width:0.5px;height:0.5px;width:100%"> </div>
+                                <div>
+                                    @currentClass.Date.ToString("dd - MM - yyyy")
+                                </div>
+                                <div>
+                                    @currentClass.ClassType
+                                </div>
+
+                                <div style="border-bottom:solid;border-width:0.5px;height:0.5px;width:100%"> </div>
+
+
+                                @currentClass.CurrentSize/@currentClass.MaxSize
+                                <div style="border-bottom:solid;border-width:0.5px;height:0.5px;width:100%"> </div>
+                                <div style="height:10px"></div>
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    var appUser = UserManager.GetUserAsync(User).Result;
+                                    if (appUser.DateOfBirth > DateTime.Now.AddYears(-14))
+                                    {
+                                        <div>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal" data-bs-classid="@currentClass.ScheduleID">
+                                                Book
+                                            </button>
+                                        </div>
+                                    }
+                                }
+                            </div>
+
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
     }
 
 </div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="test">Open modal for test</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="test">Open modal for test</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="test">Open modal for test</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="bookModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="registerForm" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Book</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <input asp-for="test" type="hidden" id="ScheduleId" />
+                @* <asp:TextBox ID="ScheduleId" type="text" runat="server"></asp:TextBox> *@
+                <div class="modal-body">
+                    Are you sure you want to book onto this class?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" data-bs-sumbit="modal">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+
+        var bookModal = document.getElementById('bookModal')
+        bookModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget
+            var classid = button.getAttribute('data-bs-classid')
+
+            document.getElementById("ScheduleId").value = classid;
+
+
+        })
+
+
+    </script>
+
+}
+
+
+

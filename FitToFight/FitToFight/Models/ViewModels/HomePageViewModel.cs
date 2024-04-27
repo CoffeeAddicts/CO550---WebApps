@@ -1,4 +1,4 @@
-﻿namespace FitToFight.Models
+﻿namespace FitToFight.Models.ViewModels
 {
     public class HomePageViewModel
     {

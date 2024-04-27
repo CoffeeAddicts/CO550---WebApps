@@ -1,0 +1,31 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+<h1>Manage your account</h1>
+
+<div>
+    <h2>Change your account settings</h2>
+    <hr />
+    <div class="col-lg-9 mx-auto rounded border p-3 m-10" style="background-color:#FFFFFF">
+    <div class="row" >
+        <div class="col-md-3" style="background-color:#FFFFFF">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-md-9" style="background-color:#FFFFFF">
+            @RenderBody()
+        </div>
+    </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

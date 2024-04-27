@@ -7,5 +7,6 @@ namespace FitToFight.Models
         [Key]
         public string Key { get; set; }
         public string Data { get; set; }
+        //public string ImageUrl { get; set; }
     }
 }

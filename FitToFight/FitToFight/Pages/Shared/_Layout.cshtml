@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using FitToFight.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,15 +14,21 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FitToFight.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Style.css" asp-append-version="true" />
+    <style>
+        .hoverable:hover {
+            border-bottom: 2px solid red;
+            font-size: 22px;
+            transition: font-size 1s,border-bottom 2s;
+        }
+    </style>
 </head>
 
-<style>
-    .hoverable:hover {
-        border-bottom: 2px solid red;
-        font-size:22px;
-        transition: font-size 1s,border-bottom 2s;
-    }
-</style>
+
+
+
+
+
 <body style="background-color:#262626">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -33,12 +46,12 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" asp-area="" asp-page="ClassPage/Index">Classes</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-page="/Privacy">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-page="/Home/Index">Home</a>
-                    </li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Admin/Index">Admin</a>
+                        </li>
+                    }
                 </ul>
                     <partial name="_LoginPartial"/>
 @*                     <li class="nav-item">
