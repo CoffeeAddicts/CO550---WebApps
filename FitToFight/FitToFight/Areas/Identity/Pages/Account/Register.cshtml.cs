@@ -116,10 +116,9 @@ namespace FitToFight.Areas.Identity.Pages.Account
             [Display(Name = "Gender")]
             public Gender Gender { get; set; }
 
-            [Required]
             [DataType(DataType.PhoneNumber)]
             [Display(Name = "Emergency Contact")]
-            public int PhoneNumber { get; set; }
+            public string PhoneNumber { get; set; }
         }
 
         public enum Gender
@@ -154,8 +153,8 @@ namespace FitToFight.Areas.Identity.Pages.Account
                     DateOfBirth = Input.DateOfBirth,
                     UserName = Input.Email,
                     Email = Input.Email,
-                    PhoneNumber = Input.PhoneNumber.ToString(),
-                    Gender = Input.Gender.ToString(), // This will return a number? 
+                    PhoneNumber = Input.PhoneNumber,
+                    Gender = Input.Gender.ToString(),
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);

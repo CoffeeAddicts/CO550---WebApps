@@ -41,7 +41,7 @@
                         {
                             <tr>
                                 <td style="width:20%">@data.Header</td>
-                                <td style="width:20%">@data.Data</td>
+                                <td style="width:20%">@(data.Data.Length > 100 ? data.Data.Substring(0,100) + "..." : data.Data )</td>
                                 <td style="width:20%">@data.ImageUrl</td>
                                 <td style="width:20%">@data.Order</td>
                                 <td style="width:20%">
@@ -69,7 +69,7 @@
         <div class="modal-content">
             <form id="addDataForm" method="post">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Home Page Data</h5>
+                    <h5 class="modal-title" id="homePageTitle">Add New Home Page Data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="modal-body">
@@ -85,7 +85,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-4 col-form-label"> Data</label>
                         <div class="col-sm-8">
-                            <input asp-for="InputHomeData.Data" class="form-control" id="data">
+                            <textarea asp-for="InputHomeData.Data" class="form-control" text-wrap:normal" type="text" id="data"> </textarea>
                             <span asp-validation-for="InputHomeData.Data" class="text-danger"></span>
                         </div>
                     </div>
@@ -193,8 +193,8 @@
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserModal" data-bs-id="@data.Id" data-bs-type="@IndexModel.Types.UsersDelete">
                                         Delete
                                     </button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserModal" data-bs-id="@data.Id" data-bs-type="@IndexModel.Types.UsersAdmin">
-                                        Set Admin
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserModal" data-bs-id="@data.Id" data-bs-type="@(data.isAdmin ? IndexModel.Types.UsersAdminRemove : IndexModel.Types.UsersAdmin)">
+                                        @(!data.isAdmin ? "Set Admin" : "Remove Admin")
                                     </button>
                                 </td>
                             </tr>
@@ -321,18 +321,29 @@
                         @foreach (var data in Model.ViewModel.Classes.Where(r => !r.Past).ToList())
                         {
                             <tr>
-                            <td style="width:20%">@data.Date</td>
+                                <td style="width:20%">@data.Date</td>
                                 <td style="width:20%">@data.ClassType</td>
                                 <td style="width:20%">@data.Open</td>
                                 <td style="width:10%">@data.MaxSize</td>
                                 <td style="width:10%">@data.CurrentSize</td>
                                 <td style="width:20%">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DataModel" data-bs-type="@IndexModel.Types.HomeDataEdit">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#ClassModelView"
+                                            data-bs-date="@data.Date"
+                                            data-bs-classType="@data.ClassType"
+                                            data-bs-day="@data.Day"
+                                            data-bs-open="@data.Open"
+                                            data-bs-maxSize="@data.MaxSize"
+                                            data-bs-users="@String.Join(",", Model.ViewModel.ActiveClasses.Where(r => r.ScheduleID == data.ScheduleID).Select(r => r.Name).ToList())">
                                         View
                                     </button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DataModel" data-bs-type="@IndexModel.Types.HomeDataEdit">
-                                        Cancel
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#ClassModelCancel"
+                                            data-bs-id="@data.ScheduleID"
+                                            data-bs-type="@(data.Open ? IndexModel.Types.ClassesCancel : IndexModel.Types.ClassesUnCancel)">
+                                        @(data.Open ? "Cancel" : "Open")
                                     </button>
+
 
                                 </td>
                             </tr>
@@ -347,6 +358,94 @@
     </div>
 </div>
 
+<div class="modal fade" id="ClassModelView">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Class</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Date</label>
+                    <div class="col-sm-8">
+                        <label id="date"></label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Time</label>
+                    <div class="col-sm-8">
+                        <label id="time"></label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Day</label>
+                    <div class="col-sm-8">
+                        <label id="day"></label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Class Type</label>
+                    <div class="col-sm-8">
+                        <label id="classType"></label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Open</label>
+                    <div class="col-sm-8">
+                        <label id="open"></label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Max Size</label>
+                    <div class="col-sm-8">
+                        <label id="maxSize"></label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Users</label>
+                    <div class="col-sm-8">
+                        <label id="users"></label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ClassModelCancel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="UserForm" method="post">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">View Class</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <input asp-for="Type" type="hidden" id="TypeClass" />
+                    <input asp-for="InputClass.Id" type="hidden" id="idClass" />
+                </div>
+                <div class="modal-body" id="modal-body-class">
+                    <div>Are you sure you want to cancel this class?</div>
+
+                    <div>All users will be removed from the class.</div>
+
+                    <div>This cannot be undone.</div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger" data-bs-sumbit="modal" id="classSubmitButton">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <div style="height:10px"></div>
 
 @{
@@ -355,6 +454,121 @@
 @{
     #region Settings
 }
+
+<div class="row-lg-11">
+    <div class="col-lg-11 mx-auto rounded border p-3 bg-light">
+        <div class="row mx-auto" style="margin-top:10px">
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>app Settings</h2>
+                        </div>
+                    </div>
+                </div>
+                <table id="UserTable" name="UserTable" class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:20%">Key</th>
+                            <th style="width:10%">Value String</th>
+                            <th style="width:10%">Value Int</th>
+                            <th style="width:10%">Value Bool</th>
+                            <th style="width:10%">Value Float</th>
+                            <th style="width:20%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in Model.ViewModel.AppSettings)
+                        {
+                            <tr title="@data.Explanation">
+                                <td style="width:20%">@data.Key</td>
+                                <td style="width:10%">@data.ValueString</td>
+                                <td style="width:10%">@data.ValueInt</td>
+                                <td style="width:10%">@data.ValueBool</td>
+                                <td style="width:10%">@data.ValueDecimal</td>
+                                <td style="width:20%">
+
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#AppSettingsEdit"
+                                            data-bs-key="@data.Key"
+                                            data-bs-valueString="@data.ValueString"
+                                            data-bs-valueInt="@data.ValueInt"
+                                            data-bs-valueBool="@data.ValueBool"
+                                            data-bs-valueFloat="@data.ValueDecimal"
+                                            data-bs-explantaion="@data.Explanation"
+                                            data-bs-type="@IndexModel.Types.AppSettingsEdit">
+                                        Edit
+                                    </button>
+
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    <div class="hint-text">Showing <b>@Model.ViewModel.AppSettings.Count</b> entries</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="AppSettingsEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="addDataForm" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Title">Edit AppSetting</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <input asp-for="Type" type="hidden" id="TypeAppSettings" />
+                    <input asp-for="InputAppSettings.Key" type="hidden" id="key" />
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label"> String </label>
+                        <div class="col-sm-8">
+                            <input asp-for="InputAppSettings.ValueString" class="form-control" id="string">
+                            <span asp-validation-for="InputAppSettings.ValueString" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label"> Int </label>
+                        <div class="col-sm-8">
+                            <input asp-for="InputAppSettings.ValueInt" class="form-control" id="int">
+                            <span asp-validation-for="InputAppSettings.ValueInt" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label"> Bool </label>
+                        <div class="col-sm-8">
+                            <input asp-for="InputAppSettings.ValueBool" class="form-control" id="bool">
+                            <span asp-validation-for="InputAppSettings.ValueBool" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label"> Float </label>
+                        <div class="col-sm-8">
+                            <input asp-for="InputAppSettings.ValueDecimal" class="form-control" id="float">
+                            <span asp-validation-for="InputAppSettings.ValueDecimal" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label"> Explanation </label>
+                        <div class="col-sm-8">
+                            <input asp-for="InputAppSettings.Explanation" class="form-control" id="explanation">
+                            <span asp-validation-for="InputAppSettings.Explanation" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" data-bs-sumbit="modal" id="submitButton">Confirm</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div style="height:10px"></div>
 
@@ -378,6 +592,10 @@
             document.getElementById("data").value = button.getAttribute('data-bs-data')
             document.getElementById("imageUrl").value = button.getAttribute('data-bs-imageUrl')
             document.getElementById("order").value = button.getAttribute('data-bs-order')
+            document.getElementById("homePageTitle").innerText = "Edit Home Page Data"
+        }
+        else {
+            document.getElementById("homePageTitle").innerText = "Add New Home Page Data"
         }
         document.getElementById("Type").value = type;
 
@@ -402,7 +620,7 @@
         document.getElementById("lastName").innerText = button.getAttribute('data-bs-lastName')
         document.getElementById("email").innerText = button.getAttribute('data-bs-email')
         document.getElementById("phoneNumber").innerText = button.getAttribute('data-bs-phoneNumber')
-        document.getElementById("dateOfBirth").innerText = button.getAttribute('data-bs-dateOfBirth')
+        document.getElementById("dateOfBirth").innerText = button.getAttribute('data-bs-dateOfBirth').split(" ")[0]
         document.getElementById("gender").innerText = button.getAttribute('data-bs-gender')
 
 
@@ -421,7 +639,12 @@
             document.getElementById('userModalTitle').innerText = "Delete User"
             document.getElementById("userSubmitButton").classList.add("btn-danger")
         }
-        else {
+        else if (type == "UsersAdminRemove") {
+            document.getElementById('modal-body-user').innerText = "Are you sure you want to remove this user as an admin?"
+            document.getElementById('userModalTitle').innerText = "Remove Admin"
+            document.getElementById("userSubmitButton").classList.add("btn-danger")
+        }
+        else{
             document.getElementById('modal-body-user').innerText = "Are you sure you want to set this user as an admin?"
             document.getElementById('userModalTitle').innerText = "Set Admin"
             document.getElementById("userSubmitButton").classList.add("btn-danger")
@@ -433,5 +656,88 @@
 
 
     })
+
+    var ClassModelView = document.getElementById('ClassModelView')
+    ClassModelView.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget
+        var date = button.getAttribute('data-bs-date')
+        var day = button.getAttribute('data-bs-day')
+        var classType = button.getAttribute('data-bs-classType')
+        var open = button.getAttribute('data-bs-open')
+        var maxSize = button.getAttribute('data-bs-maxSize')
+        var activeClass = button.getAttribute('data-bs-activeClass')
+        var users = button.getAttribute('data-bs-users')
+
+        var dateSplit = date.split(" ");
+
+        document.getElementById("date").innerText = dateSplit[0]
+        document.getElementById("time").innerText = dateSplit[1]
+        document.getElementById("day").innerText = day
+        document.getElementById("classType").innerText = classType
+        document.getElementById("open").innerText = open
+        document.getElementById("maxSize").innerText = maxSize
+
+        var users = users.split(",")
+
+        document.getElementById("users").innerHTML = ""
+
+        for (i = 0; i < users.length; i++) {
+            var node = document.createElement("LI");
+            var textnode = document.createTextNode(users[i]);
+            node.appendChild(textnode);
+            document.getElementById("users").appendChild(node);
+        }
+
+
+
+    })
+
+    var ClassModelCancel = document.getElementById('ClassModelCancel')
+    ClassModelCancel.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget
+
+        var type = button.getAttribute('data-bs-type')
+
+
+        if (type == "ClassesUnCancel") {
+            document.getElementById('modal-body-class').innerHTML = "Are you sure you want to open this class?"
+            document.getElementById('classSubmitButton').innerText = "Open"
+            document.getElementById('classSubmitButton').classList.add("btn-success")
+            document.getElementById('classSubmitButton').classList.remove("btn-danger")
+        }
+        else {
+            document.getElementById('modal-body-class').innerTHTML = "<div>Are you sure you want to cancel this class?</div>< div > All users will be removed from the class.</div>< div > This cannot be undone.< /div>"
+            document.getElementById('classSubmitButton').innerText = "Cancel"
+            document.getElementById('classSubmitButton').classList.add("btn-danger")
+            document.getElementById('classSubmitButton').classList.remove("btn-success")
+
+        }
+
+        document.getElementById("TypeClass").value = type
+        document.getElementById("idClass").value = button.getAttribute('data-bs-id')
+
+
+    })
+
+    var AppSettingsEdit = document.getElementById('AppSettingsEdit')
+    AppSettingsEdit.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget
+
+        var type = button.getAttribute('data-bs-type')
+
+        document.getElementById("string").value = button.getAttribute('data-bs-valueString')
+        document.getElementById("int").value = button.getAttribute('data-bs-valueInt')
+        document.getElementById("bool").value = button.getAttribute('data-bs-valueBool')
+        document.getElementById("float").value = button.getAttribute('data-bs-valueFloat')
+        document.getElementById("explanation").value = button.getAttribute('data-bs-explanation')
+
+
+        document.getElementById("TypeAppSettings").value = type
+        document.getElementById("key").value = button.getAttribute('data-bs-key')
+    })
+
+
+
+
 
 </script>

@@ -30,22 +30,23 @@
 
     .imageRow {
         height: 300px;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
 
 @* <div class="container-fluid" style=""> *@
-    <section class="parallax-bg-1 text-center" style="display:grid;justify-content:center;height:400px; background-image:url('https://images.unsplash.com/photo-1591173627030-6fc3077b8d23?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
-        <div class="element">
-            <h1 class="mainHeading">
-                <i style="color:red">
-                    Fit To Fight
-                </i>
-                Kickboxing
-            </h1>
-            <p class="mainHeading">A Kickboxing Club with over 25 years of experience and 200+ championship belts won. Run by a family aiming to train people for fights, fun and fitness.</p>
-        </div>
-    </section>
-@* background-image:url('https://images.pexels.com/photos/4761788/pexels-photo-4761788.jpeg?auto=compress&cs=tinysrgb&w=450') *@
+<section class="parallax-bg-1 text-center" style="display:grid;justify-content:center;height:400px; background-image:url('https://images.unsplash.com/photo-1591173627030-6fc3077b8d23?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+    <div class="element">
+        <h1 class="mainHeading">
+            <i style="color:red">
+                Fit To Fight
+            </i>
+            Kickboxing
+        </h1>
+        <p class="mainHeading">A Kickboxing Club with over 25 years of experience and 200+ championship belts won. Run by a family aiming to train people for fights, fun and fitness.</p>
+    </div>
+</section>
 
 @{
     var count = 0;
@@ -53,16 +54,11 @@
 
 @foreach (var data in Model.HomePageData.OrderBy(r => r.Order))
 {
-    if (count % 2 == 0)
+    if (data.ImageUrl == "")
     {
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-3 mx-auto">
-                    <section class=" border border-danger rounded text-center mainSub imageRow parallax-bg-1" style="  background-image:url('@data.ImageUrl')"> 
-                    </section>
-                    @* <div class="border border-primary rounded text-center mainSub imageRow">This is a 3 row</div> *@
-                </div>
-                <div class="col-sm-9">
+                <div class="col-sm-12">
                     <div class="border border-danger rounded text-center mainSub imageRow"><h1>@data.Header</h1> @data.Data</div>
                 </div>
             </div>
@@ -70,17 +66,35 @@
     }
     else
     {
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-9">
-                    <div class="border border-danger rounded text-center mainSub imageRow"><h1>@data.Header</h1> @data.Data</div>
-                </div>
-                <div class="col-sm-3">
-                    <section class=" border border-danger rounded text-center mainSub imageRow parallax-bg-1" style=" background-image:url('@data.ImageUrl')">
+        if (count % 2 == 0)
+        {
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3 mx-auto">
+                        <section class=" border border-danger rounded text-center mainSub imageRow parallax-bg-1" style="background-image:url('@data.ImageUrl')">
                         </section>
+                        @* <div class="border border-primary rounded text-center mainSub imageRow">This is a 3 row</div> *@
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="border border-danger rounded text-center mainSub imageRow"><h1>@data.Header</h1> @data.Data</div>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="border border-danger rounded text-center mainSub imageRow"><h1>@data.Header</h1> @data.Data</div>
+                    </div>
+                    <div class="col-sm-3">
+                        <section class=" border border-danger rounded text-center mainSub imageRow parallax-bg-1" style="background-image:url('@data.ImageUrl')">
+                        </section>
+                    </div>
+                </div>
+            </div>
+        }
     }
     count += 1;
 }

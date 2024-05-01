@@ -15,5 +15,7 @@ namespace FitToFight.Models
         public int CurrentSize { get; set; }
         [NotMapped]
         public bool Past { get; set; }
+        [NotMapped]
+        public string Day{ get; set;}
     }
 }

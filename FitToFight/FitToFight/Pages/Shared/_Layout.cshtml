@@ -52,10 +52,10 @@
                         </li>
                     }
                 </ul>
-                    <partial name="_LoginPartial"/>
-@*                     <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-page="/Account/Index"><i class="glyphicon glyphicon-trash"></i>Home</a>
-                    </li> *@
+                <partial name="_LoginPartial" />
+                @*                     <li class="nav-item">
+                <a class="nav-link text-light" asp-area="" asp-page="/Account/Index"><i class="glyphicon glyphicon-trash"></i>Home</a>
+                </li> *@
 
             </div>
         </nav>
@@ -68,7 +68,19 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - FitToFight - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-sm-3 mx-auto">
+                    <a style="text-decoration:none"  href="https://www.facebook.com/FitToFightKickboxing">Fit To Fight Facebook</a>
+                </div>
+                <div class="col-sm-3 mx-auto">
+                    <a style="text-decoration:none" href="https://www.google.com/maps/dir/?api=1&destination=53.75018%2C-2.36369&fbclid=IwZXh0bgNhZW0CMTAAAR0f5E4dzdrkd16M6Dw6sT8HjX-vFDID37qgoZHAxnjyaYkZg3KlaySB59o_aem_ATY2nFfXXYVkkQ5PqYq-6rAFL9DwmwVqBTS7UpWS23BTezSOZSitn-8fHOXuP25adItWvEsO9LFCsZ9ytg2NjPgn">Unit 17 Victoria Street BB52 Accrington</a>
+
+                </div>
+                <div class="col-sm-3 mx-auto">
+                    07740 351262
+                </div>
+        </div>
+        @* &copy; 2024 - FitToFight - <a asp-area="" asp-page="/Privacy">Privacy</a> *@
         </div>
     </footer>
 

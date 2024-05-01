@@ -24,6 +24,7 @@ namespace FitToFight.Pages.ClassPage
 
         public void OnGet()
         {
+            var appSettings = _context.AppSettings.ToList();
 
             // Here the first thing will be to check that there is a years worth of data in the database
             //If not then we will need to create a years worth of data
@@ -35,12 +36,17 @@ namespace FitToFight.Pages.ClassPage
                 classes = _context.Classes.OrderBy(r => r.Date).ToList();
             }
 
-            //Get last date in the database
+
             var lastDate = DateTime.Now;
 
-            var keepingLogs = 30;
+            var keepingLogs = appSettings.Where(r => r.Key == "DaysToKeepLogs").Select(r => r.ValueInt).FirstOrDefault() ?? 30;
+            var kidsMaxCapacity = appSettings.Where(r => r.Key == "KidsMaxCapacity").Select(r => r.ValueInt).FirstOrDefault() ?? 10;
+            var normalMaxCapacity = appSettings.Where(r => r.Key == "NormalMaxCapacity").Select(r => r.ValueInt).FirstOrDefault() ?? 10;
+            var ladiesMaxCapacity = appSettings.Where(r => r.Key == "LadiesMaxCapacity").Select(r => r.ValueInt).FirstOrDefault() ?? 10;
 
-            foreach(var classItem in classes)
+            var daysInfront = 100;
+
+            foreach (var classItem in classes)
             {
                 if (classItem.Date < DateTime.Now.AddDays(-keepingLogs))
                 {
@@ -56,9 +62,9 @@ namespace FitToFight.Pages.ClassPage
             }
             else
             {
-                lastDate = lastDate.Date.AddDays(-40);
+                lastDate = lastDate.Date.AddDays(-keepingLogs);
             }
-            while (lastDate < DateTime.Now.AddDays(40))
+            while (lastDate < DateTime.Now.AddDays(daysInfront))
             {
                 TimeSpan time = new TimeSpan(0, 0, 0);
                 lastDate = lastDate.Date + time;
@@ -82,7 +88,7 @@ namespace FitToFight.Pages.ClassPage
                         ClassType = "Kids",
                         Date = lastDate + kidsLesson,
                         Open = true,
-                        MaxSize = 10
+                        MaxSize = kidsMaxCapacity
                     };
                     _context.Classes.Add(kidsClass);
                     _context.SaveChanges();
@@ -93,7 +99,7 @@ namespace FitToFight.Pages.ClassPage
                     ClassType = classType,
                     Date = lastDate + adultLesson,
                     Open = classType != "Weekend",
-                    MaxSize = 10
+                    MaxSize = classType == "Ladies" ? ladiesMaxCapacity : normalMaxCapacity
                 };
                 _context.Classes.Add(newClass);
                 _context.SaveChanges();
@@ -122,7 +128,7 @@ namespace FitToFight.Pages.ClassPage
             task.Wait();
             var appUser = task.Result;
 
-            if(type == "Cancel")
+            if (type == "Cancel")
             {
                 var classToRemove = _context.ActiveClasses.Where(r => r.ScheduleID == classItem.ScheduleID && r.UserID == Guid.Parse(appUser.Id)).FirstOrDefault();
                 _context.ActiveClasses.Remove(classToRemove);

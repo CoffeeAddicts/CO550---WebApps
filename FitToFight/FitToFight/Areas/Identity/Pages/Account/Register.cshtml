@@ -57,14 +57,13 @@
                 <label class="col-sm-4 col-form-label"> Gender </label>
                 <div class="col-sm-8">
                     <select asp-for="Input.Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control"></select>
-                    @* <input asp-for="Input.Gender" class="form-control"> *@
                     <span asp-validation-for="Input.Gender" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label"> Emergency Contact </label>
                 <div class="col-sm-8">
-                    <input asp-for="Input.PhoneNumber" class="form-control">
+                    <input asp-for="Input.PhoneNumber" input="tel" class="form-control">
                     <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                 </div>
             </div>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitToFight.Migrations
 {
     [DbContext(typeof(FitToFightContext))]
-    partial class FitToFightContextModelSnapshot : ModelSnapshot
+    [Migration("20240429120905_SixthMigration")]
+    partial class SixthMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,18 +46,20 @@ namespace FitToFight.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Explanation")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("ValueBool")
+                    b.Property<bool>("ValueBool")
                         .HasColumnType("bit");
 
-                    b.Property<float?>("ValueDecimal")
+                    b.Property<float>("ValueDecimal")
                         .HasColumnType("real");
 
-                    b.Property<int?>("ValueInt")
+                    b.Property<int>("ValueInt")
                         .HasColumnType("int");
 
                     b.Property<string>("ValueString")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Key");

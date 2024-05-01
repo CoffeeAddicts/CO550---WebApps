@@ -31,7 +31,7 @@
         background-color: orange;
     }
 
-    .bg.Closed {
+    .bg-Closed {
         background-color: red;
     }
 </style>
@@ -74,7 +74,7 @@
                                 continue;
                             }
 
-                            <div class="col-sm-1 rounded text-center text-light mx-auto @(!currentClass.Open  ? "bg.Closed" :$"bg-{currentClass.ClassType}" ) " style="height:175px;width:150px;">
+                            <div class="col-sm-1 rounded text-center text-light mx-auto @(!currentClass.Open  ? "bg-Closed" :$"bg-{currentClass.ClassType}" ) " style="height:175px;width:150px;">
                                 <div>
                                     @(date.AddDays(i + j - dayOffset).DayOfWeek)
                                 </div>
@@ -98,7 +98,7 @@
                                 @if (SignInManager.IsSignedIn(User))
                                 {
                                     var appUser = UserManager.GetUserAsync(User).Result;
-                                    if (appUser.Gender == "Female" && currentClass.ClassType == "Ladies" && appUser.DateOfBirth < DateTime.Now.AddYears(-14))
+                                    if ((appUser.Gender == "Female" || appUser.Gender == "Other") && currentClass.ClassType == "Ladies" && appUser.DateOfBirth < DateTime.Now.AddYears(-14) && currentClass.Open && currentClass.Date > DateTime.Now)
                                     {
                                         var alreadyBooked = Model.ActiveClasses.Where(r => r.ScheduleID == currentClass.ScheduleID && r.UserID == Guid.Parse(appUser.Id)).FirstOrDefault();
 
@@ -120,7 +120,7 @@
                                         }
 
                                     }
-                                    else if (currentClass.ClassType == "Normal" && appUser.DateOfBirth < DateTime.Now.AddYears(-14))
+                                    else if (currentClass.ClassType == "Normal" && appUser.DateOfBirth < DateTime.Now.AddYears(-14) && currentClass.Open && currentClass.Date > DateTime.Now)
                                     {
                                         var alreadyBooked = Model.ActiveClasses.Where(r => r.ScheduleID == currentClass.ScheduleID && r.UserID == Guid.Parse(appUser.Id)).FirstOrDefault();
 
@@ -174,7 +174,7 @@
                                 continue;
                             }
 
-                            <div class="col-sm-1 rounded text-center text-light mx-auto @(!currentClass.Open  ? "bg.Closed" :$"bg-{currentClass.ClassType}" ) " style="height:175px;width:150px;">
+                            <div class="col-sm-1 rounded text-center text-light mx-auto @(!currentClass.Open  ? "bg-Closed" :$"bg-{currentClass.ClassType}" ) " style="height:175px;width:150px;">
                                 <div>
                                     @(date.AddDays(i + j - dayOffset).DayOfWeek)
                                 </div>
@@ -199,7 +199,7 @@
                                 @if (SignInManager.IsSignedIn(User))
                                 {
                                     var appUser = UserManager.GetUserAsync(User).Result;
-                                    if (appUser.DateOfBirth > DateTime.Now.AddYears(-14))
+                                    if (appUser.DateOfBirth > DateTime.Now.AddYears(-14) && currentClass.Open && currentClass.Date > DateTime.Now)
                                     {
                                         var alreadyBooked = Model.ActiveClasses.Where(r => r.ScheduleID == currentClass.ScheduleID && r.UserID == Guid.Parse(appUser.Id)).FirstOrDefault();
 
@@ -244,7 +244,6 @@
                 </div>
                 <input asp-for="scheduleId" type="hidden" id="ScheduleId" />
                 <input asp-for="type" type="hidden" id="Type" />
-                @* <asp:TextBox ID="ScheduleId" type="text" runat="server"></asp:TextBox> *@
                 <div class="modal-body" id="modal-body">
                 </div>
                 <div class="modal-footer">
@@ -269,13 +268,9 @@
 
             if (type == "book") {
                 document.getElementById("modal-body").innerHTML = "Are you sure you want to book onto this class?"
-                document.getElementById("submitButton").classList.remove("btn-danger")
-                document.getElementById("submitButton").classList.add("btn-success")
             }
             else {
                 document.getElementById("modal-body").innerHTML = "Are you sure you want to cancel this class?"
-                document.getElementById("submitButton").classList.remove("btn-success")
-                document.getElementById("submitButton").classList.add("btn-danger")
             }
 
 
